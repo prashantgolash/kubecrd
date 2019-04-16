@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kubecrd
+  labels:
+    app: kubecrd
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kubecrd
+  template:
+    metadata:
+      labels:
+        app: kubecrd
+    spec:
+      serviceAccount: admin-user
+      containers:
+        - name: kubecrd
+          image: pgolash123/kubecrd:v0.1
+          imagePullPolicy: Always
